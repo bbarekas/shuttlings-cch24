@@ -9,4 +9,9 @@ Let's start!
 
 * Day -1: Done
 * Day 2: Done
+* Day 5: Done
 
+
+### Tests
+
+Validated with CCH 24 Validator test cases here: https://docs.rs/crate/cch24-validator/5.0.0/source/src/lib.rs
