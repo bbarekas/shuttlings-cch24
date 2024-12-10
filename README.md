@@ -10,6 +10,7 @@ Let's start!
 * Day -1: ✔️
 * Day 2: ✔️
 * Day 5: ✔️
+* Day 9: ✔️
 
 
 ## Tests
