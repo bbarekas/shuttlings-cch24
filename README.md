@@ -8,11 +8,14 @@ Let's start!
 ## Status
 
 * Day -1: ✔️
-* Day 2: ✔️
-* Day 5: ✔️
-* Day 9: ✔️
+* Day  2: ✔️
+* Day  5: ✔️
+* Day  9: ✔️
+* Day 12: ✔️
+
+<!-- 🚧 -->
 
 
 ## Tests
 
-Validated with CCH 24 Validator test cases here: https://docs.rs/crate/cch24-validator/5.0.0/source/src/lib.rs
+Validated with CCH 24 Validator test cases here: https://docs.rs/crate/cch24-validator/12.0.0/source/src/lib.rs

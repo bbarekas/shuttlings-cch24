@@ -14,12 +14,12 @@ use serde_json::Value as JsonValue;
 use serde_with::serde_as;
 
 
-#[derive(Debug, Deserialize)]
+#[derive(Deserialize)]
 struct Content {
     package: Package,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Deserialize)]
 struct Package {
     metadata: Metadata,
     keywords: Vec<String>,

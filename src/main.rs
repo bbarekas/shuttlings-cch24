@@ -16,7 +16,8 @@ async fn main() -> shuttle_axum::ShuttleAxum {
         .merge(challenges::challenge0::get_routes())
         .merge(challenges::challenge2::get_routes())
         .merge(challenges::challenge5::get_routes())
-        .merge(challenges::challenge9::get_routes());
+        .merge(challenges::challenge9::get_routes())
+        .merge(challenges::challenge12::get_routes());
 
     Ok(router.into())
 }
