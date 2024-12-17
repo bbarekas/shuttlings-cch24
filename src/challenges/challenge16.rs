@@ -32,8 +32,7 @@ pub fn get_routes() -> Router {
     Router::new()
         .route("/16/wrap", post(handle_wrap))
         .route("/16/unwrap", get(handle_unwrap))
-        //.route("/16/decode", post(handle_decode))
-
+        .route("/16/decode", post(handle_decode))
 }
 
 async fn handle_wrap(headers: HeaderMap, body: String) ->  impl IntoResponse {
@@ -76,4 +75,23 @@ async fn handle_unwrap(headers: HeaderMap) ->  impl IntoResponse {
     };
     //println!("{:?}", data);
     (StatusCode::OK, data.claims.data.to_string()).into_response()
+}
+
+async fn handle_decode(body: String) ->  impl IntoResponse {
+    let key = DecodingKey::from_rsa_pem(include_bytes!("../../day16_santa_public_key.pem")).unwrap();
+    let mut validation = Validation::default();
+    validation.algorithms = vec![Algorithm::RS256, Algorithm::RS512];
+    // Ignore expiration.
+    validation.validate_exp = false;
+    validation.required_spec_claims.clear();
+
+    let token = decode::<Value>(&body, &key, &validation);
+    println!("Token:\n{:?}", token);
+    match token {
+        Ok(data) => (StatusCode::OK, serde_json::to_string(&data.claims).unwrap()).into_response(),
+        Err(e) if e.kind() == &jsonwebtoken::errors::ErrorKind::InvalidSignature =>
+            (StatusCode::UNAUTHORIZED, "Invalid signature!").into_response(),
+        Err(e) => (StatusCode::BAD_REQUEST, format!("JWT is invalid. {:?}", e)).into_response(),
+    }
+
 }
