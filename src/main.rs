@@ -33,7 +33,8 @@ async fn main(
         .merge(challenges::challenge9::get_routes())
         .merge(challenges::challenge12::get_routes())
         .merge(challenges::challenge16::get_routes())
-        .merge(challenges::challenge19::get_routes(pool));
+        .merge(challenges::challenge19::get_routes(pool))
+        .merge(challenges::challenge23::get_routes());
 
     Ok(router.into())
 }
