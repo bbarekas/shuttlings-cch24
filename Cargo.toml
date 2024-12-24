@@ -4,7 +4,7 @@ version = "0.2.0"
 edition = "2021"
 
 [dependencies]
-axum = "0.7.4"
+axum = { version = "0.7.4", features = ["query", "multipart"] }
 cargo-manifest = "0.17.0"
 chrono = "0.4.38"
 dotenv = "0.15.0"
